@@ -1,4 +1,4 @@
-import Web3 from 'web3'; // constructor
+import Web3 from '../node_modules/web3'; // constructor
 
 // A new instance of Web3
 // currentProvider has access to Rinkeby with keys, etc. courtesy MetaMask config
