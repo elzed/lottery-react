@@ -1,3 +1,5 @@
+An interactive front-end for the [solidity-based lottery app](https://github.com/elzed/solidity-lottery).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
