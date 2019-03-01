@@ -5,11 +5,9 @@ import web3 from './web3';
 import lottery from './lottery';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = { manager: '' };
-    }
+    state = {
+        manager: ''
+    };
 
     // Automatically called when App component is mounted on screen
     async componentDidMount() {
