@@ -11,7 +11,8 @@ class App extends Component {
         this.state = { manager: '' };
     }
 
-    async componentDidMount() { // Automatically called when App component is mounted on screen
+    // Automatically called when App component is mounted on screen
+    async componentDidMount() {
         // Get some information from our contract
         const manager = await lottery.methods.manager().call();
 
@@ -21,7 +22,10 @@ class App extends Component {
     render() {
         web3.eth.getAccounts().then(console.log);
         return (
-
+            <div>
+                <h2>Lottery Contract</h2>
+                <p>This contract is managed by {this.state.manager}</p>
+            </div>
         );
     }
 }
