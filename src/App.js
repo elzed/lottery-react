@@ -6,15 +6,19 @@ import lottery from './lottery';
 
 class App extends Component {
     state = {
-        manager: ''
+        manager: '',
+        players: []
     };
 
     // Automatically called when App component is mounted on screen
     async componentDidMount() {
         // Get some information from our contract
         const manager = await lottery.methods.manager().call();
+        // Get the number of players entered
+        // getPlayers() defined in Lottery.sol to return array of addresses
+        const players = await lottery.methods.getPlayers().call();
 
-        this.setState({ manager: manager });
+        this.setState({ manager, players });
     }
 
     render() {
