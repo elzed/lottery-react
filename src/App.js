@@ -25,6 +25,8 @@ class App extends Component {
         this.setState({ manager, players, balance });
     }
 
+    // TODO: create onSubmit function to call the Lottery contract
+    
     render() {
         web3.eth.getAccounts().then(console.log);
         return (
@@ -38,7 +40,7 @@ class App extends Component {
 
                 <hr/>
 
-                <form>
+                <form onSubmit={this.onSubmit}>
                     <h4>Want to try your luck?</h4>
                     <div>
                         {/*Label and Text Input*/}
