@@ -43,6 +43,8 @@ class App extends Component {
         this.setState({ message: 'You have been entered!' });
     };
 
+    // TODO: Create onClick function to handle Pick a Winner! button click
+
     render() {
         web3.eth.getAccounts().then(console.log);
         return (
@@ -68,6 +70,11 @@ class App extends Component {
                     </div>
                     <button>Enter</button>
                 </form>
+
+                <hr/>
+
+                <h4>Ready to pick a winner?</h4>
+                <button onClick={this.onClick}>Pick a winner!</button>
 
                 <hr/>
 
