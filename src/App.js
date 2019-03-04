@@ -43,7 +43,22 @@ class App extends Component {
         this.setState({ message: 'You have been entered!' });
     };
 
-    // TODO: Create onClick function to handle Pick a Winner! button click
+    onClick = async () => {
+        // Get a list of all accounts
+        const accounts = await web3.eth.getAccounts();
+
+        this.setState({ message: 'Waiting on transaction success...' });
+
+        // Call pickWinner() function on Lottery.sol contract
+        await lottery.methods.pickWinner().send({
+            // Specify who is sending in the transaction
+            // AKA the Source Account
+            // AKA the initiating account at index 0
+            from: accounts[0]
+        })
+
+        this.setState({ message: 'A winner has been picked!' });
+    };
 
     render() {
         web3.eth.getAccounts().then(console.log);
