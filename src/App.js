@@ -25,8 +25,17 @@ class App extends Component {
         this.setState({ manager, players, balance });
     }
 
-    // TODO: create onSubmit function to call the Lottery contract
-    
+    onSubmit = async (event) => {
+        event.preventDefault();
+        const accounts = await web3.eth.getAccounts();
+
+        // Send ether (wei) to Contract
+        await lottery.methods.enter().send({
+            from: accounts[0],
+            value: web3.utils.toWei(this.state.value, 'ether')
+        });
+    };
+
     render() {
         web3.eth.getAccounts().then(console.log);
         return (
