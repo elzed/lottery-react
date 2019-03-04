@@ -4,6 +4,9 @@ import web3 from './web3';
 import lottery from './lottery';
 
 class App extends Component {
+    // Initialize five properties of state
+    // manager, players, balance come from contract
+    // value, message are set by the component
     state = {
         manager: '',
         players: [],
@@ -27,6 +30,8 @@ class App extends Component {
 
     onSubmit = async (event) => {
         event.preventDefault();
+
+        // Get a list of all accounts from MetaMask
         const accounts = await web3.eth.getAccounts();
 
         // Before sending ether, create a new state with a message
@@ -44,7 +49,6 @@ class App extends Component {
     };
 
     onClick = async () => {
-        // Get a list of all accounts
         const accounts = await web3.eth.getAccounts();
 
         this.setState({ message: 'Waiting on transaction success...' });
