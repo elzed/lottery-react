@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import web3 from './web3';
 import lottery from './lottery';
@@ -9,7 +8,8 @@ class App extends Component {
         manager: '',
         players: [],
         balance: '',
-        value: ''
+        value: '',
+        message: ''
     };
 
     // Automatically called when App component is mounted on screen
@@ -29,11 +29,18 @@ class App extends Component {
         event.preventDefault();
         const accounts = await web3.eth.getAccounts();
 
+        // Before sending ether, create a new state with a message
+        // instructing users on the status of their submission
+        this.setState({ message: 'Waiting on transaction success...' });
+
         // Send ether (wei) to Contract
         await lottery.methods.enter().send({
             from: accounts[0],
             value: web3.utils.toWei(this.state.value, 'ether')
         });
+
+        // Update message after send() function completes
+        this.setState({ message: 'You have been entered!' });
     };
 
     render() {
@@ -61,6 +68,10 @@ class App extends Component {
                     </div>
                     <button>Enter</button>
                 </form>
+
+                <hr/>
+
+                <h1>{this.state.message}</h1>
             </div>
         );
     }
