@@ -55,7 +55,7 @@ class App extends Component {
             // AKA the Source Account
             // AKA the initiating account at index 0
             from: accounts[0]
-        })
+        });
 
         this.setState({ message: 'A winner has been picked!' });
     };
